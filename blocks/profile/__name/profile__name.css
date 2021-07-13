@@ -3,5 +3,5 @@
   font-size: 42px;
   line-height: 48px;
   margin: 0;
-  max-height: 39px; /* Костыль, чтобы была центровка кнопки редактирования выровнена как в макете */
+  max-width: 500px;
 }

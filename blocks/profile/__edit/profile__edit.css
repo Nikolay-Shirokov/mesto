@@ -7,5 +7,5 @@
   background-color: var(--basic-dark);
   border: 1px solid var(--basic-white);
   box-sizing: border-box;
-  align-self: end;
+  align-self: center;
 }

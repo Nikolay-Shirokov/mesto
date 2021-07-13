@@ -1,3 +1,9 @@
 ﻿.place {
-
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  background-color: var(--basic-white);
+  border-radius: 10px;
+  overflow: hidden;
+  gap: 0 25px;
 }

@@ -1,3 +1,11 @@
 ﻿.place__like {
-
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--basic-white);
+  border: none;
+  align-self: center;
+  margin-right: 30px;
 }
