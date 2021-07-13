@@ -1,3 +1,11 @@
 ﻿.profile__edit {
-
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/edit.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--basic-dark);
+  border: 1px solid var(--basic-white);
+  box-sizing: border-box;
+  align-self: center;
 }
