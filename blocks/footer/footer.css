@@ -1,3 +1,5 @@
 ﻿.footer {
-
+  min-height: 140px;
+  display: flex;
+  align-items: center;
 }
