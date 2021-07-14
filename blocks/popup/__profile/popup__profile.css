@@ -4,5 +4,11 @@
   gap: 30px;
   padding: 0;
   border: none;
-  margin: 0;
+  margin: 0 0 48px 0;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__profile {
+    margin-bottom: 45px;
+  }
 }
