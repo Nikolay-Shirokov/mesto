@@ -20,47 +20,41 @@
       <img class="profile__avatar" src="./images/avatar.webp" alt="Аватар нашего героя">
       <div class="profile__info">
         <h1 class="profile__name page-text">Николай Широков</h1>
-        <button class="profile__edit button" aria-label="Редактировать профиль"></button>
+        <button class="profile__edit button" type="button" aria-label="Редактировать профиль"></button>
         <p class="profile__position page-text">Студент курса по веб-разработке</p>
       </div>
-      <button class="profile__add-place button" aria-label="Добавить карточку места"></button>
+      <button class="profile__add-place button" type="button" aria-label="Добавить карточку места"></button>
     </section>
     <ul class="places root__places">
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
       <li class="place">
-        <img class="place__image" src="./images/yandex-praktikum.svg"
-          alt="Логотип Яндекс.Практикум">
+        <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
         <h2 class="place__caption page-text">Яндекс.Практикум</h2>
-        <button class="place__like button" aria-label="Нравится"></button>
+        <button class="place__like button" type="button" aria-label="Нравится"></button>
       </li>
     </ul>
   </main>
@@ -68,6 +62,18 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2021 Николай Широков</p>
   </footer>
+
+  <article class="popup popup_opened">
+    <form class="popup__container" action="post">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <fieldset class="popup__profile">
+        <input class="popup__name popup__input" type="text" placeholder="Имя героя">
+        <input class="popup__position popup__input" type="text" placeholder="Позиция героя в мире">
+      </fieldset>
+      <button class="popup__submit button" type="submit">Сохранить</button>
+      <button class="popup__close button" type="button" aria-label="Закрыть"></button>
+    </form>
+  </article>
 
 </body>
 
