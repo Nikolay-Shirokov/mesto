@@ -2,3 +2,10 @@
   padding-top: 50px;
   padding-bottom: 7px;
 }
+
+@media screen and (max-width: 500px) {
+  .root__places {
+    padding-top: 36px;
+    padding-bottom: 12px;
+  }
+}

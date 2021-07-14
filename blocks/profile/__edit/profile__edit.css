@@ -9,3 +9,11 @@
   box-sizing: border-box;
   align-self: center;
 }
+
+@media screen and (max-width: 500px) {
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    background-size: 8px 8px;
+  }
+}

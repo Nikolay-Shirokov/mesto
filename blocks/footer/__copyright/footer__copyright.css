@@ -3,3 +3,10 @@
   line-height: 22px;
   color: var(--basic-gray);
 }
+
+@media screen and (max-width: 500px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
