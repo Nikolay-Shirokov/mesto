@@ -5,3 +5,16 @@
   margin: 0;
   max-width: 500px;
 }
+
+@media screen and (max-width: 800px) {
+  .profile__name {
+    grid-column: 2;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
+}
