@@ -1,6 +1,7 @@
 ﻿.place__image {
   grid-column: 1/-1;
   width: 100%;
+  height: 282px;
   object-fit: cover;
   object-position: center;
   background-color: var(--basic-gray);

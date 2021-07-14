@@ -2,5 +2,5 @@
   flex-grow: 1;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 16px 18px;
+  gap: 10px 11px;
 }

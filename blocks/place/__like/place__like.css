@@ -6,6 +6,6 @@
   background-repeat: no-repeat;
   background-color: var(--basic-white);
   border: none;
-  align-self: center;
-  margin-right: 30px;
+  /* align-self: center; */
+  margin-right: 20px;
 }
