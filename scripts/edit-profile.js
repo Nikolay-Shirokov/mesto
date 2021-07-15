@@ -10,8 +10,8 @@ const buttonPopupSubmit = document.querySelector('.popup__submit');
 const nameField     = document.querySelector('.profile__name');
 const positionField = document.querySelector('.profile__position');
 
-const nameInput     = document.querySelector('.popup__name');
-const positionInput = document.querySelector('.popup__position');
+const nameInput     = document.querySelector('.popup__input_field_name');
+const positionInput = document.querySelector('.popup__input_field_position');
 
 // Функции
 
