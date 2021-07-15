@@ -38,7 +38,7 @@ function renderPlace(place) {
   let placeHTML =
   `<li class="place">
     <img class="place__image" src="${place.image}" alt="${place.imageAlt}">
-    <h2 class="place__caption page-text">${place.caption}</h2>
+    <h2 class="place__caption">${place.caption}</h2>
     <button class="place__like button" type="button" aria-label="Нравится"></button>
   </li>`;
 
