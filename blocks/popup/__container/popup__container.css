@@ -6,8 +6,8 @@
   /* min-height: 330px; */
   padding: 34px 36px 37px 36px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+/*   display: flex;
+  flex-direction: column; */
 /*   gap: 48px; */
   position: relative;
 }

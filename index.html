@@ -67,15 +67,20 @@
   </footer>
 
   <div class="popup">
-    <form class="popup__container" action="post">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="popup__profile">
-        <input class="popup__input popup__input_field_name" type="text" placeholder="Имя героя">
-        <input class="popup__input popup__input_field_position" type="text" placeholder="Позиция героя в мире">
-      </fieldset>
-      <button class="popup__submit button" type="submit">Сохранить</button>
+    <div class="popup__container">
+      <!-- Да, понимаю, что теперь форму по всей видимости нужно выделять в отдельный блок.
+      И вложенные элементы уже переподчинить ему.
+      Но можно уже не буду переделывать? :( -->
+      <form action="post" class="popup__form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <fieldset class="popup__profile">
+          <input class="popup__input popup__input_field_name" type="text" placeholder="Имя героя">
+          <input class="popup__input popup__input_field_position" type="text" placeholder="Позиция героя в мире">
+        </fieldset>
+        <button class="popup__submit button" type="submit">Сохранить</button>
+      </form>
       <button class="popup__close button" type="button" aria-label="Закрыть"></button>
-    </form>
+    </div>
   </div>
   <!-- <script src="./scripts/render-places.js"></script> -->
   <script src="./scripts/edit-profile.js"></script>
