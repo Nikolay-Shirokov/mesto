@@ -16,29 +16,19 @@ const positionInput = document.querySelector('.popup__position');
 // Функции
 
 function showPopup() {
+
+  nameInput.value     = nameField.textContent;
+  positionInput.value = positionField.textContent;
+
   popup.classList.add('popup_opened');
+
 }
 
 function hidePopup() {
   popup.classList.remove('popup_opened');
 }
 
-// Обработчики событий
-
-buttonProfileEdit.addEventListener('click', function () {
-
-  nameInput.value     = nameField.textContent;
-  positionInput.value = positionField.textContent;
-
-  showPopup();
-
-});
-
-buttonPopupClose.addEventListener('click', function () {
-  hidePopup();
-});
-
-formElement.addEventListener('submit', function (evt) {
+function onPopupSubmit(evt) {
 
   evt.preventDefault();
 
@@ -47,4 +37,11 @@ formElement.addEventListener('submit', function (evt) {
 
   hidePopup();
 
-});
+}
+
+// Обработчики событий
+
+buttonProfileEdit.addEventListener('click', showPopup);
+buttonPopupClose.addEventListener('click', hidePopup);
+
+formElement.addEventListener('submit', onPopupSubmit);
