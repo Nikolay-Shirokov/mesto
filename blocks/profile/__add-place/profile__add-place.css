@@ -4,7 +4,7 @@
   background-image: url(../../../images/add.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-color: var(--basic-dark);
+  background-color: transparent;
   border: 2px solid var(--basic-white);
   border-radius: 2px;
   box-sizing: border-box;
