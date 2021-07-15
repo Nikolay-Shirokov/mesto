@@ -9,3 +9,7 @@
   /* align-self: center; */
   margin-right: 20px;
 }
+
+.place__like:hover {
+  opacity: .5;
+}
