@@ -1,3 +1,12 @@
 .root__footer {
   flex-shrink: 0;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
 }
+
+/* @media screen and (max-width: 916px) {
+  .root__footer {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+} */
