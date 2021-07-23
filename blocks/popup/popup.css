@@ -11,5 +11,5 @@
   /* display: none; */
   visibility: hidden;
   opacity: 0;
-  transition: opacity .3s linear;
+  transition: opacity .3s, visibility .3s linear;
 }
