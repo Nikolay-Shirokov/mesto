@@ -1,4 +1,4 @@
-﻿.popup__profile {
+﻿.form__fields {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .popup__profile {
+  .form__fields {
     margin-bottom: 45px;
   }
 }
