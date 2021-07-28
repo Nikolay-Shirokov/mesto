@@ -1,51 +1,48 @@
 const nodePlaces = document.querySelector('.places');
+const placeTemplate = document.querySelector('#place').content;
+const placeElementReference = placeTemplate.querySelector('.place');
 
-let userPlacesList = [
+const initialCards = [
   {
-    image: './images/yandex-praktikum.svg',
-    imageAlt: 'Логотип Яндекс.Практикум',
-    caption: 'Яндекс.Практикум'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    image: 'https://svgsilh.com/svg/1363011.svg',
-    imageAlt: 'Логотип HTML Academy',
-    caption: 'HTML Academy'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    image: 'https://svgsilh.com/svg/1363011.svg',
-    imageAlt: 'Логотип Нетология',
-    caption: 'Нетология'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    image: 'https://svgsilh.com/svg/1363011.svg',
-    imageAlt: 'Логотип Skillbox',
-    caption: 'Skillbox'
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    image: 'https://svgsilh.com/svg/1363011.svg',
-    imageAlt: 'Логотип Udemy',
-    caption: 'Udemy'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    image: 'https://svgsilh.com/svg/1363011.svg',
-    imageAlt: 'Логотип Skillfactory',
-    caption: 'Skillfactory'
-  },
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
 ];
 
 function renderPlace(place) {
 
-  let placeHTML =
-  `<li class="place">
-    <img class="place__image" src="${place.image}" alt="${place.imageAlt}">
-    <h2 class="place__caption">${place.caption}</h2>
-    <button class="place__like button" type="button" aria-label="Нравится"></button>
-  </li>`;
+  const placeElement = placeElementReference.cloneNode(true);
 
-  nodePlaces.insertAdjacentHTML('beforeend', placeHTML);
+  const place__image = placeElement.querySelector('.place__image');
+  place__image.setAttribute('src', place.link);
+  place__image.setAttribute('alt', place.name);
+
+  const place__caption = placeElement.querySelector('.place__caption');
+  place__caption.textContent = place.name;
+
+  nodePlaces.prepend(placeElement);
 
 }
 
-for (let index = 0; index < userPlacesList.length; index++) {
-  renderPlace(userPlacesList[index]);
-}
+initialCards.forEach(renderPlace);
+

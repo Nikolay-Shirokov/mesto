@@ -28,36 +28,14 @@
     </section>
     <section class="root__places">
       <ul class="places">
-        <li class="place">
-          <img class="place__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
-          <h2 class="place__caption">Яндекс.Практикум</h2>
-          <button class="place__like place__like_active button" type="button" aria-label="Нравится"></button>
-        </li>
-        <li class="place">
-          <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Тут мог быть логотип">
-          <h2 class="place__caption">HTML Academy</h2>
-          <button class="place__like button" type="button" aria-label="Нравится"></button>
-        </li>
-        <li class="place">
-          <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Тут мог быть логотип">
-          <h2 class="place__caption">Нетология</h2>
-          <button class="place__like button" type="button" aria-label="Нравится"></button>
-        </li>
-        <li class="place">
-          <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Тут мог быть логотип">
-          <h2 class="place__caption">Udemy</h2>
-          <button class="place__like button" type="button" aria-label="Нравится"></button>
-        </li>
-        <li class="place">
-          <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Тут мог быть логотип">
-          <h2 class="place__caption">Skillfactory</h2>
-          <button class="place__like button" type="button" aria-label="Нравится"></button>
-        </li>
-        <li class="place">
-          <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Тут мог быть логотип">
-          <h2 class="place__caption">Skillbox</h2>
-          <button class="place__like button" type="button" aria-label="Нравится"></button>
-        </li>
+        <template id="place">
+          <li class="place">
+            <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Изображение">
+            <h2 class="place__caption">Название</h2>
+            <button class="place__like place__like_active button" type="button" aria-label="Нравится"
+              title="Нравится"></button>
+          </li>
+        </template>
       </ul>
     </section>
   </main>
@@ -68,21 +46,19 @@
 
   <div class="popup">
     <div class="popup__container">
-      <!-- Да, понимаю, что теперь форму по всей видимости нужно выделять в отдельный блок.
-      И вложенные элементы уже переподчинить ему.
-      Но можно уже не буду переделывать? :( -->
       <form class="popup__form" action="post" name="form-edit-profile">
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__profile">
           <input class="popup__input popup__input_field_name" type="text" name="name" placeholder="Имя героя" required>
-          <input class="popup__input popup__input_field_position" type="text" name="position" placeholder="Позиция героя в мире" required>
+          <input class="popup__input popup__input_field_position" type="text" name="position"
+            placeholder="Позиция героя в мире" required>
         </fieldset>
         <button class="popup__submit button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close button" type="button" aria-label="Закрыть"></button>
     </div>
   </div>
-  <!-- <script src="./scripts/render-places.js"></script> -->
+  <script src="./scripts/render-places.js"></script>
   <script src="./scripts/edit-profile.js"></script>
 </body>
 
