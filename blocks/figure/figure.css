@@ -1,0 +1,8 @@
+﻿.figure {
+  margin: 0;
+  /* background-color: transparent; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--basic-white);
+}

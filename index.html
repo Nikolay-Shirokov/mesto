@@ -32,8 +32,7 @@
           <li class="place">
             <img class="place__image" src="https://svgsilh.com/svg/1363011.svg" alt="Изображение">
             <h2 class="place__caption">Название</h2>
-            <button class="place__delete button" type="button" aria-label="Удалить"
-              title="Удалить"></button>
+            <button class="place__delete button" type="button" aria-label="Удалить" title="Удалить"></button>
             <button class="place__like place__like_active button" type="button" aria-label="Нравится"
               title="Нравится"></button>
           </li>
@@ -48,20 +47,32 @@
 
   <div class="popup">
     <div class="popup__container">
-      <form class="form" action="post" name="form-edit-profile">
-        <h2 class="form__title">Редактировать профиль</h2>
-        <fieldset class="form__fields">
-          <input class="form__input popup__input_field_name" type="text" name="name" placeholder="Имя героя" required>
-          <input class="form__input popup__input_field_position" type="text" name="position"
-            placeholder="Позиция героя в мире" required>
-        </fieldset>
-        <button class="form__submit button" type="submit">Сохранить</button>
-      </form>
       <button class="popup__close button" type="button" aria-label="Закрыть"></button>
     </div>
   </div>
+
+  <template id="form">
+    <form class="form" action="post" name="form-edit-profile">
+      <h2 class="form__title">Редактировать профиль</h2>
+      <fieldset class="form__fields">
+        <input class="form__input popup__input_field_name" type="text" name="name" placeholder="Имя героя" required>
+        <input class="form__input popup__input_field_position" type="text" name="position"
+          placeholder="Позиция героя в мире" required>
+      </fieldset>
+      <button class="form__submit button" type="submit">Сохранить</button>
+    </form>
+  </template>
+
+  <template id="figure">
+    <figure class="figure">
+      <img class="figure__image" src="./images/yandex-praktikum.svg" alt="Логотип Яндекс.Практикум">
+      <figcaption class="figure__caption">Яндекс.Практикум</figcaption>
+    </figure>
+  </template>
+
   <script src="./scripts/render-places.js"></script>
   <script src="./scripts/edit-profile.js"></script>
+
 </body>
 
 </html>
