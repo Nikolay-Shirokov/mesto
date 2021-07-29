@@ -52,12 +52,10 @@
   </div>
 
   <template id="form">
-    <form class="form" action="post" name="form-edit-profile">
-      <h2 class="form__title">Редактировать профиль</h2>
+    <form class="form" action="post" name="form-name">
+      <h2 class="form__title">Заголовок</h2>
       <fieldset class="form__fields">
-        <input class="form__input popup__input_field_name" type="text" name="name" placeholder="Имя героя" required>
-        <input class="form__input popup__input_field_position" type="text" name="position"
-          placeholder="Позиция героя в мире" required>
+        <input class="form__input" type="text" name="name" placeholder="Подсказка" required>
       </fieldset>
       <button class="form__submit button" type="submit">Сохранить</button>
     </form>
