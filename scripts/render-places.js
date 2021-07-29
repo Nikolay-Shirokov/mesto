@@ -29,16 +29,25 @@ const initialCards = [
   }
 ];
 
+
 function renderPlace(place) {
 
   const placeElement = placeElementReference.cloneNode(true);
 
-  const place__image = placeElement.querySelector('.place__image');
-  place__image.setAttribute('src', place.link);
-  place__image.setAttribute('alt', place.name);
+  const placeImage = placeElement.querySelector('.place__image');
+  placeImage.setAttribute('src', place.link);
+  placeImage.setAttribute('alt', place.name);
 
-  const place__caption = placeElement.querySelector('.place__caption');
-  place__caption.textContent = place.name;
+  placeImage.addEventListener('click', () => {showFigure(place)});
+
+  const placeCaption = placeElement.querySelector('.place__caption');
+  placeCaption.textContent = place.name;
+
+  const placeDeleteButton = placeElement.querySelector('.place__delete');
+  placeDeleteButton.addEventListener('click', () => {placeElement.remove()});
+
+  const placeLikeButton = placeElement.querySelector('.place__like');
+  placeLikeButton.addEventListener('click', () => {placeLikeButton.classList.toggle('place__like_active')});
 
   nodePlaces.prepend(placeElement);
 
