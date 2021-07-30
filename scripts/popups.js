@@ -76,6 +76,9 @@ function onSubmitFormAddPlace(event) {
     link: inputPlaceLink.value
   };
 
+  inputPlaceName.value = '';
+  inputPlaceLink.value = '';
+
   renderPlace(place);
   hidePopup(event);
 
