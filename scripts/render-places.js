@@ -38,7 +38,7 @@ function renderPlace(place) {
   placeImage.setAttribute('src', place.link);
   placeImage.setAttribute('alt', place.name);
 
-  placeImage.addEventListener('click', () => {showFigure(place)});
+  placeImage.addEventListener('click', () => {showPicture(place)});
 
   const placeCaption = placeElement.querySelector('.place__caption');
   placeCaption.textContent = place.name;

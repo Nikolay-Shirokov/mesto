@@ -1,176 +1,111 @@
 // Инициализация переменных
-
-const popup           = document.querySelector('.popup');
-const popupContainer  = document.querySelector('.popup__container');
-
 const buttonProfileEdit = document.querySelector('.profile__edit');
 const buttonAddPlace    = document.querySelector('.profile__add-place');
-const buttonPopupClose  = document.querySelector('.popup__close');
 
-const nameField     = document.querySelector('.profile__name');
-const positionField = document.querySelector('.profile__position');
+//Поля профиля
+const fieldName     = document.querySelector('.profile__name');
+const fieldPosition = document.querySelector('.profile__position');
 
-const figureTemplate = document.querySelector('#figure').content;
-const figureElementReference = figureTemplate.querySelector('.figure');
+// Модальное окно превью картинки
+const figureElement = document.querySelector('.figure');
+const figureImage   = figureElement.querySelector('.figure__image');
+const figureCaption = figureElement.querySelector('.figure__caption');
+const popupPicture  = figureElement.closest('.popup');
 
-const formTemplate = document.querySelector('#form').content;
-const formElementReference = formTemplate.querySelector('.form');
+//Модальное окно редактирования профиля
+const popupEditProfile  = document.querySelector('#popup-edit-profile');
+const inputName         = popupEditProfile.querySelector('.form__input[name="name"]');
+const inputPosition     = popupEditProfile.querySelector('.form__input[name="position"]');
+
+//Модальное окно добавления карточки места
+const popupAddPlace   = document.querySelector('#popup-add-place');
+const inputPlaceName  = popupAddPlace.querySelector('.form__input[name="name"]');
+const inputPlaceLink  = popupAddPlace.querySelector('.form__input[name="link"]');
 
 // Функции
 
-function showPopup() {
+function showPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-function hidePopup() {
+function hidePopup(event) {
+  const popup = event.target.closest('.popup');
   popup.classList.remove('popup_opened');
 }
 
-function clearPopupContainer() {
+function showPicture(figureObject) {
 
-  Array.from(popupContainer.children).forEach(element => {
-    if (!(element.tagName === 'BUTTON')) {
-      element.remove();
-    }
-  });
-
-}
-
-function showFigure(figureObject) {
-
-  const figureElement = figureElementReference.cloneNode(true);
-
-  clearPopupContainer();
-
-  const figureImage = figureElement.querySelector('.figure__image');
   figureImage.setAttribute('src', figureObject.link);
   figureImage.setAttribute('alt', figureObject.name);
-
-  const figureCaption = figureElement.querySelector('.figure__caption');
   figureCaption.textContent = figureObject.name;
 
-  popupContainer.append(figureElement);
-
-  showPopup();
-
-}
-
-function showForm(formObject) {
-
-  const formElement = formElementReference.cloneNode(true);
-
-  clearPopupContainer();
-
-  formElement.setAttribute('name', formObject.name);
-
-  const titleElement = formElement.querySelector('.form__title');
-  titleElement.textContent = formObject.title;
-
-  const fieldset = formElement.querySelector('.form__fields');
-  const inputReference = fieldset.querySelector('.form__input');
-
-  fieldset.innerHTML = '';
-
-  formObject.fields.forEach(field => {
-
-    const input = inputReference.cloneNode(true);
-    input.setAttribute('name', field.name);
-    input.setAttribute('value', field.value);
-    input.setAttribute('placeholder', field.placeholder);
-
-    fieldset.append(input);
-
-  });
-
-  const submitButton = formElement.querySelector('.form__submit');
-  submitButton.textContent = formObject.submitLabel;
-
-  formElement.addEventListener('submit', event => {
-
-    event.preventDefault();
-
-    formObject.onSubmit(formElement);
-
-    hidePopup();
-
-  });
-
-  popupContainer.append(formElement);
-
-  showPopup();
+  showPopup(popupPicture);
 
 }
 
 function showFormEditProfile() {
 
-  const formObject = {
-    name: 'form-edit-profile',
-    title: 'Редактировать профиль',
-    fields: [
-      {
-        name: 'name',
-        value: nameField.textContent,
-        placeholder: 'Имя героя'
-      },
-      {
-        name: 'position',
-        value: positionField.textContent,
-        placeholder: 'Позиция героя в мире'
-      }
-    ],
-    submitLabel: 'Сохранить',
-    onSubmit: formElement => {
+  inputName.value = fieldName.textContent;
+  inputPosition.value = fieldPosition.textContent;
 
-      const formData = new FormData(formElement);
-
-      nameField.textContent     = formData.get('name');
-      positionField.textContent = formData.get('position');
-
-    }
-  }
-
-  showForm(formObject);
+  showPopup(popupEditProfile);
 
 }
 
 function showFormAddPlace() {
+  showPopup(popupAddPlace);
+}
 
-  const formObject = {
-    name: 'form-add-place',
-    title: 'Новое место',
-    fields: [
-      {
-        name: 'name',
-        value: '',
-        placeholder: 'Название'
-      },
-      {
-        name: 'link',
-        value: '',
-        placeholder: 'Ссылка на картинку'
-      }
-    ],
-    submitLabel: 'Создать',
-    onSubmit: formElement => {
+function onSubmitFormEditProfile(event) {
 
-      const formData = new FormData(formElement);
+  event.preventDefault();
 
-      const place = {
-        name: formData.get('name'),
-        link: formData.get('link')
-      }
+  fieldName.textContent = inputName.value;
+  fieldPosition.textContent = inputPosition.value;
 
-      renderPlace(place);
+  hidePopup(event);
 
-    }
-  }
+}
 
-  showForm(formObject);
+function onSubmitFormAddPlace(event) {
+
+  event.preventDefault();
+
+  const place = {
+    name: inputPlaceName.value,
+    link: inputPlaceLink.value
+  };
+
+  renderPlace(place);
+  hidePopup(event);
+
+}
+
+function addEventListenerOnClosePopupButtonClick() {
+
+  const closeButtons = document.querySelectorAll('.popup__close');
+  closeButtons.forEach(closeButton => {closeButton.addEventListener('click', hidePopup)});
+
+}
+
+function addEventListenerOnOpenPopupButtonClick() {
+
+  buttonProfileEdit.addEventListener('click', showFormEditProfile);
+  buttonAddPlace.addEventListener('click', showFormAddPlace);
+
+}
+
+function addEventListenerOnSubmitForms() {
+
+  const formEditProfile = popupEditProfile.querySelector('.form');
+  formEditProfile.addEventListener('submit', onSubmitFormEditProfile);
+
+  const formAddPlace = popupAddPlace.querySelector('.form');
+  formAddPlace.addEventListener('submit', onSubmitFormAddPlace);
 
 }
 
 // Обработчики событий
-
-buttonProfileEdit.addEventListener('click', showFormEditProfile);
-buttonAddPlace.addEventListener('click', showFormAddPlace);
-buttonPopupClose.addEventListener('click', hidePopup);
+addEventListenerOnClosePopupButtonClick();
+addEventListenerOnOpenPopupButtonClick();
+addEventListenerOnSubmitForms();
