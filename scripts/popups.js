@@ -103,7 +103,7 @@ function showForm(formObject) {
 
 function showFormEditProfile() {
 
-  formObject = {
+  const formObject = {
     name: 'form-edit-profile',
     title: 'Редактировать профиль',
     fields: [
@@ -121,7 +121,7 @@ function showFormEditProfile() {
     submitLabel: 'Сохранить',
     onSubmit: formElement => {
 
-      formData = new FormData(formElement);
+      const formData = new FormData(formElement);
 
       nameField.textContent     = formData.get('name');
       positionField.textContent = formData.get('position');
@@ -135,7 +135,7 @@ function showFormEditProfile() {
 
 function showFormAddPlace() {
 
-  formObject = {
+  const formObject = {
     name: 'form-add-place',
     title: 'Новое место',
     fields: [
@@ -153,9 +153,9 @@ function showFormAddPlace() {
     submitLabel: 'Создать',
     onSubmit: formElement => {
 
-      formData = new FormData(formElement);
+      const formData = new FormData(formElement);
 
-      place = {
+      const place = {
         name: formData.get('name'),
         link: formData.get('link')
       }
