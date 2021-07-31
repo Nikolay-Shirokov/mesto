@@ -28,8 +28,7 @@ function showPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-function hidePopup(event) {
-  const popup = event.target.closest('.popup');
+function hidePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
@@ -63,7 +62,7 @@ function onSubmitFormEditProfile(event) {
   fieldName.textContent = inputName.value;
   fieldPosition.textContent = inputPosition.value;
 
-  hidePopup(event);
+  hidePopup(popupEditProfile);
 
 }
 
@@ -80,14 +79,18 @@ function onSubmitFormAddPlace(event) {
   inputPlaceLink.value = '';
 
   renderPlace(place);
-  hidePopup(event);
+  hidePopup(popupAddPlace);
 
 }
 
 function addEventListenerOnClosePopupButtonClick() {
 
   const closeButtons = document.querySelectorAll('.popup__close');
-  closeButtons.forEach(closeButton => {closeButton.addEventListener('click', hidePopup)});
+
+  closeButtons.forEach(closeButton => {
+    const popup = closeButton.closest('.popup');
+    closeButton.addEventListener('click', () => {hidePopup(popup)});
+  });
 
 }
 
