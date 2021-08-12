@@ -91,7 +91,7 @@ function onSubmitFormAddPlace(event) {
   inputPlaceName.value = '';
   inputPlaceLink.value = '';
 
-  renderPlace(place);
+  prependPlace(place);
   hidePopup(popupAddPlace);
 
 }

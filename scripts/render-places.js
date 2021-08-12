@@ -29,8 +29,7 @@ const initialCards = [
   }
 ];
 
-
-function renderPlace(place) {
+function createPlaceElement(place) {
 
   const placeElement = placeElementReference.cloneNode(true);
 
@@ -49,9 +48,19 @@ function renderPlace(place) {
   const placeLikeButton = placeElement.querySelector('.place__like');
   placeLikeButton.addEventListener('click', () => {placeLikeButton.classList.toggle('place__like_active')});
 
-  nodePlaces.prepend(placeElement);
+  return placeElement;
 
 }
 
-initialCards.forEach(renderPlace);
+function prependPlace(place) {
+  const placeElement = createPlaceElement(place);
+  nodePlaces.prepend(placeElement);
+}
+
+function appendPlace(place) {
+  const placeElement = createPlaceElement(place);
+  nodePlaces.append(placeElement);
+}
+
+initialCards.forEach(appendPlace);
 
