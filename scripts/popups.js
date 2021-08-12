@@ -22,14 +22,27 @@ const popupAddPlace   = document.querySelector('#popup-add-place');
 const inputPlaceName  = popupAddPlace.querySelector('.form__input[name="name"]');
 const inputPlaceLink  = popupAddPlace.querySelector('.form__input[name="link"]');
 
+let openedPopup;
+
 // Функции
 
 function showPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', hidePopupOnEscButton);
+  openedPopup = popup;
 }
 
 function hidePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', hidePopupOnEscButton);
+}
+
+function hidePopupOnEscButton(event) {
+  //const popup = document.querySelector('.popup_opened');
+  const popup = openedPopup;
+  if (event.key === 'Escape') {
+    hidePopup(popup);
+  }
 }
 
 function showPicture(figureObject) {
