@@ -83,13 +83,17 @@ function onSubmitFormAddPlace(event) {
 
 }
 
-function addEventListenerOnClosePopupButtonClick() {
+function addEventListenerOnShadowZoneAndCloseButtonClick() {
 
-  const closeButtons = document.querySelectorAll('.popup__close');
+  const popups = document.querySelectorAll('.popup');
 
-  closeButtons.forEach(closeButton => {
-    const popup = closeButton.closest('.popup');
-    closeButton.addEventListener('click', () => {hidePopup(popup)});
+  popups.forEach(popup => {
+    popup.addEventListener('click', (event) => {
+      if (!(event.target === event.currentTarget || event.target.classList.contains('popup__close'))) {
+        return;
+      };
+      hidePopup(popup);
+    });
   });
 
 }
@@ -112,6 +116,6 @@ function addEventListenerOnSubmitForms() {
 }
 
 // Обработчики событий
-addEventListenerOnClosePopupButtonClick();
+addEventListenerOnShadowZoneAndCloseButtonClick();
 addEventListenerOnOpenPopupButtonClick();
 addEventListenerOnSubmitForms();
