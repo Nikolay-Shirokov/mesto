@@ -47,15 +47,15 @@
   <div class="popup" id="popup-edit-profile">
     <div class="popup__container">
       <button class="popup__close button" type="button" aria-label="Закрыть"></button>
-      <form class="form" action="post" name="form-edit-profile">
+      <form class="form" action="post" name="form-edit-profile" novalidate>
         <h2 class="form__title">Редактировать профиль</h2>
         <fieldset class="form__fields">
           <label class="form__field">
-            <input class="form__input" type="text" name="name" placeholder="Имя героя" required>
+            <input class="form__input" type="text" name="name" placeholder="Имя героя" required minlength="2" maxlength="40">
             <span class="form__input-error" data-input-name="name"></span>
           </label>
           <label class="form__field">
-            <input class="form__input" type="text" name="position" placeholder="Позиция героя в мире" required>
+            <input class="form__input" type="text" name="position" placeholder="Позиция героя в мире" required minlength="2" maxlength="200">
             <span class="form__input-error" data-input-name="position"></span>
           </label>
         </fieldset>
@@ -67,15 +67,15 @@
   <div class="popup" id="popup-add-place">
     <div class="popup__container">
       <button class="popup__close button" type="button" aria-label="Закрыть"></button>
-      <form class="form" action="post" name="form-add-place">
+      <form class="form" action="post" name="form-add-place" novalidate>
         <h2 class="form__title">Новое место</h2>
         <fieldset class="form__fields">
           <label class="form__field">
-            <input class="form__input" type="text" name="name" placeholder="Название" required>
+            <input class="form__input" type="text" name="name" placeholder="Название" required minlength="2" maxlength="30">
             <span class="form__input-error" data-input-name="name"></span>
           </label>
           <label class="form__field">
-            <input class="form__input" type="text" name="link" placeholder="Ссылка на картинку" required>
+            <input class="form__input" type="url" name="link" placeholder="Ссылка на картинку" required>
             <span class="form__input-error" data-input-name="link"></span>
           </label>
         </fieldset>
@@ -96,6 +96,8 @@
 
   <script src="./scripts/render-places.js"></script>
   <script src="./scripts/popups.js"></script>
+  <script src="./scripts/validate.js"></script>
+  <script src="./scripts/enableValidation.js"></script>
 
 </body>
 
