@@ -2,5 +2,6 @@
   --basic-dark: black;
   --basic-white: white;
   --basic-gray: #545454;
+  --basic-error: #FF0000;
   --page-padding: 0;
 }
