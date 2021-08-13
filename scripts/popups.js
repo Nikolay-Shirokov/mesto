@@ -7,30 +7,38 @@ const fieldName     = document.querySelector('.profile__name');
 const fieldPosition = document.querySelector('.profile__position');
 
 // Модальное окно превью картинки
-const figureElement = document.querySelector('.figure');
+const popupPicture  = document.querySelector('#popup-picture');
+const figureElement = popupPicture.querySelector('.figure');
 const figureImage   = figureElement.querySelector('.figure__image');
 const figureCaption = figureElement.querySelector('.figure__caption');
-const popupPicture  = figureElement.closest('.popup');
 
 //Модальное окно редактирования профиля
 const popupEditProfile  = document.querySelector('#popup-edit-profile');
-const inputName         = popupEditProfile.querySelector('.form__input[name="name"]');
-const inputPosition     = popupEditProfile.querySelector('.form__input[name="position"]');
+const formEditProfile   = document.forms['form-edit-profile'];
+const inputName         = formEditProfile.elements.name;
+const inputPosition     = formEditProfile.elements.position;
 
 //Модальное окно добавления карточки места
 const popupAddPlace   = document.querySelector('#popup-add-place');
-const inputPlaceName  = popupAddPlace.querySelector('.form__input[name="name"]');
-const inputPlaceLink  = popupAddPlace.querySelector('.form__input[name="link"]');
+const formAddPlace    = document.forms['form-add-place'];
+const inputPlaceName  = formEditProfile.elements.name;
+const inputPlaceLink  = formEditProfile.elements.link;
 
 let openedPopup;
 
 // Функции
 
 function showPopup(popup) {
+
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', hidePopupOnEscButton);
   openedPopup = popup;
-  checkValidationOnOpenPopup(popup, currentValidationParameters);
+
+  const formElement = popup.querySelector(currentValidationParameters.formSelector);
+  if (formElement) {
+    checkValidationOnOpenPopup(formElement, currentValidationParameters);
+  }
+
 }
 
 function hidePopup(popup) {
@@ -120,10 +128,7 @@ function addEventListenerOnOpenPopupButtonClick() {
 
 function addEventListenerOnSubmitForms() {
 
-  const formEditProfile = popupEditProfile.querySelector('.form');
   formEditProfile.addEventListener('submit', onSubmitFormEditProfile);
-
-  const formAddPlace = popupAddPlace.querySelector('.form');
   formAddPlace.addEventListener('submit', onSubmitFormAddPlace);
 
 }

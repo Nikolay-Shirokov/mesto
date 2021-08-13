@@ -46,9 +46,8 @@ function toggleButtonState(buttonElement, inputList, validationParameters) {
 
 }
 
-function checkValidationOnOpenPopup(popup, validationParameters) {
+function checkValidationOnOpenPopup(formElement, validationParameters) {
 
-  const formElement   = popup.querySelector(validationParameters.formSelector);
   const inputList     = Array.from(formElement.querySelectorAll(validationParameters.inputSelector));
   const buttonElement = formElement.querySelector(validationParameters.submitButtonSelector);
 
