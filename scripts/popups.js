@@ -21,8 +21,8 @@ const inputPosition     = formEditProfile.elements.position;
 //Модальное окно добавления карточки места
 const popupAddPlace   = document.querySelector('#popup-add-place');
 const formAddPlace    = document.forms['form-add-place'];
-const inputPlaceName  = formEditProfile.elements.name;
-const inputPlaceLink  = formEditProfile.elements.link;
+const inputPlaceName  = formAddPlace.elements.name;
+const inputPlaceLink  = formAddPlace.elements.link;
 
 let openedPopup;
 
