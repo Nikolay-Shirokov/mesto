@@ -34,11 +34,6 @@ function showPopup(popup) {
   document.addEventListener('keydown', hidePopupOnEscButton);
   openedPopup = popup;
 
-  const formElement = popup.querySelector(currentValidationParameters.formSelector);
-  if (formElement) {
-    checkValidationOnOpenPopup(formElement, currentValidationParameters);
-  }
-
 }
 
 function hidePopup(popup) {
@@ -69,12 +64,18 @@ function showFormEditProfile() {
   inputName.value = fieldName.textContent;
   inputPosition.value = fieldPosition.textContent;
 
+  checkValidationOnOpenPopup(formEditProfile, currentValidationParameters);
   showPopup(popupEditProfile);
 
 }
 
 function showFormAddPlace() {
+
+  formAddPlace.reset();
+
+  checkValidationOnOpenPopup(formAddPlace, currentValidationParameters);
   showPopup(popupAddPlace);
+
 }
 
 function onSubmitFormEditProfile(event) {

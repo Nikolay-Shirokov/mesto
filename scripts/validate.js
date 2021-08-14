@@ -52,7 +52,7 @@ function checkValidationOnOpenPopup(formElement, validationParameters) {
   const buttonElement = formElement.querySelector(validationParameters.submitButtonSelector);
 
   inputList.forEach(inputElement => {
-    checkInputValidity(formElement, inputElement, validationParameters);
+    hideInputError(formElement, inputElement, validationParameters);
   });
 
   toggleButtonState(buttonElement, inputList, validationParameters);
