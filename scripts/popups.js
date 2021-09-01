@@ -1,4 +1,5 @@
 import { prependPlace } from "./render-places.js";
+import { FormValidator } from "./classes/formValidator.js";
 
 // Инициализация переменных
 const buttonProfileEdit = document.querySelector('.profile__edit');
@@ -25,6 +26,16 @@ const popupAddPlace   = document.querySelector('#popup-add-place');
 const formAddPlace    = document.forms['form-add-place'];
 const inputPlaceName  = formAddPlace.elements.name;
 const inputPlaceLink  = formAddPlace.elements.link;
+
+const validationParameters = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  errorSelector: '.form__input-error',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_visible'
+}
 
 let openedPopup;
 
@@ -66,7 +77,9 @@ function showFormEditProfile() {
   inputName.value = fieldName.textContent;
   inputPosition.value = fieldPosition.textContent;
 
-  checkValidationOnOpenPopup(formEditProfile, currentValidationParameters);
+  const formValidator = new FormValidator(formEditProfile, validationParameters);
+  formValidator.checkValidationOnOpenPopup();
+
   showPopup(popupEditProfile);
 
 }
@@ -75,7 +88,9 @@ function showFormAddPlace() {
 
   formAddPlace.reset();
 
-  checkValidationOnOpenPopup(formAddPlace, currentValidationParameters);
+  const formValidator = new FormValidator(formAddPlace, validationParameters);
+  formValidator.checkValidationOnOpenPopup();
+
   showPopup(popupAddPlace);
 
 }
@@ -136,9 +151,19 @@ function addEventListenerOnSubmitForms() {
 
 }
 
+function enableValidationForms() {
+  const formList = document.querySelectorAll(validationParameters.formSelector);
+  formList.forEach((formElement) => {
+    const formValidator = new FormValidator(formElement, validationParameters);
+    formValidator.enableValidation();
+  })
+}
+
 // Обработчики событий
 addEventListenerOnShadowZoneAndCloseButtonClick();
 addEventListenerOnOpenPopupButtonClick();
 addEventListenerOnSubmitForms();
+
+enableValidationForms();
 
 export {showPicture};
