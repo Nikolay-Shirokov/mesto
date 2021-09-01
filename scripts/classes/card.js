@@ -10,8 +10,6 @@ export class Card {
 
   _cloneTemplate() {
 
-    /* В задании оговорено что в конструктор класса должен передаваться селектор шаблона
-    поэтому приходится шаблон искать каждый раз снова */
     const placeTemplate = document.querySelector(this._templateSelector).content;
     const placeElementReference = placeTemplate.querySelector('.place');
     const placeElement = placeElementReference.cloneNode(true);
@@ -34,9 +32,9 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._placeImage.addEventListener('click', () => { showPicture(this) });
-    this._placeDeleteButton.addEventListener('click', () => { this._placeElement.remove() });
-    this._placeLikeButton.addEventListener('click', () => { this._placeLikeButton.classList.toggle('place__like_active') });
+    this._placeImage.addEventListener('click', () => showPicture(this.name, this.link)); // Фигурные скобки ставил специально. Ведь функция не должна ничего возвращать.
+    this._placeDeleteButton.addEventListener('click', () => this._placeElement.remove());
+    this._placeLikeButton.addEventListener('click', () => this._placeLikeButton.classList.toggle('place__like_active'));
   }
 
   createPlaceElement() {

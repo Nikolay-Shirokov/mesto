@@ -1,5 +1,5 @@
 import { prependPlace } from "./render-places.js";
-import { FormValidator } from "./classes/formValidator.js";
+import { FormValidator } from "./classes/FormValidator.js";
 
 // Инициализация переменных
 const buttonProfileEdit = document.querySelector('.profile__edit');
@@ -62,11 +62,11 @@ function hidePopupOnEscButton(event) {
   }
 }
 
-function showPicture(figureObject) {
+function showPicture(name, link) {
 
-  figureImage.setAttribute('src', figureObject.link);
-  figureImage.setAttribute('alt', figureObject.name);
-  figureCaption.textContent = figureObject.name;
+  figureImage.setAttribute('src', link);
+  figureImage.setAttribute('alt', name);
+  figureCaption.textContent = name;
 
   showPopup(popupPicture);
 
