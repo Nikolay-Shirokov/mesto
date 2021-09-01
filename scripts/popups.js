@@ -1,4 +1,4 @@
-import { prependPlace } from "./render-places.js";
+import { addPlace } from "./render-places.js";
 import { FormValidator } from "./classes/FormValidator.js";
 
 // Инициализация переменных
@@ -117,7 +117,7 @@ function onSubmitFormAddPlace(event) {
 
   event.target.reset();
 
-  prependPlace(place);
+  addPlace(place);
   hidePopup(popupAddPlace);
 
 }

@@ -29,18 +29,12 @@ const initialCards = [
   }
 ];
 
-function prependPlace(place) {
+function addPlace(place, method='prepend') {
   const card = new Card(place, '#place');
   const placeElement = card.createPlaceElement(place);
-  nodePlaces.prepend(placeElement);
+  nodePlaces[method](placeElement);
 }
 
-function appendPlace(place) {
-  const card = new Card(place, '#place');
-  const placeElement = card.createPlaceElement(place);
-  nodePlaces.append(placeElement);
-}
+initialCards.forEach(place => addPlace(place, 'append'));
 
-initialCards.forEach(appendPlace);
-
-export {prependPlace};
+export {addPlace};
