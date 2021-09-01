@@ -1,6 +1,6 @@
+import { Card } from "./classes/card.js";
+
 const nodePlaces = document.querySelector('.places');
-const placeTemplate = document.querySelector('#place').content;
-const placeElementReference = placeTemplate.querySelector('.place');
 
 const initialCards = [
   {
@@ -29,38 +29,18 @@ const initialCards = [
   }
 ];
 
-function createPlaceElement(place) {
-
-  const placeElement = placeElementReference.cloneNode(true);
-
-  const placeImage = placeElement.querySelector('.place__image');
-  placeImage.setAttribute('src', place.link);
-  placeImage.setAttribute('alt', place.name);
-
-  placeImage.addEventListener('click', () => {showPicture(place)});
-
-  const placeCaption = placeElement.querySelector('.place__caption');
-  placeCaption.textContent = place.name;
-
-  const placeDeleteButton = placeElement.querySelector('.place__delete');
-  placeDeleteButton.addEventListener('click', () => {placeElement.remove()});
-
-  const placeLikeButton = placeElement.querySelector('.place__like');
-  placeLikeButton.addEventListener('click', () => {placeLikeButton.classList.toggle('place__like_active')});
-
-  return placeElement;
-
-}
-
 function prependPlace(place) {
-  const placeElement = createPlaceElement(place);
+  const card = new Card(place, '#place');
+  const placeElement = card.createPlaceElement(place);
   nodePlaces.prepend(placeElement);
 }
 
 function appendPlace(place) {
-  const placeElement = createPlaceElement(place);
+  const card = new Card(place, '#place');
+  const placeElement = card.createPlaceElement(place);
   nodePlaces.append(placeElement);
 }
 
 initialCards.forEach(appendPlace);
 
+export {prependPlace};

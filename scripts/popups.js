@@ -1,3 +1,5 @@
+import { prependPlace } from "./render-places.js";
+
 // Инициализация переменных
 const buttonProfileEdit = document.querySelector('.profile__edit');
 const buttonAddPlace    = document.querySelector('.profile__add-place');
@@ -138,3 +140,5 @@ function addEventListenerOnSubmitForms() {
 addEventListenerOnShadowZoneAndCloseButtonClick();
 addEventListenerOnOpenPopupButtonClick();
 addEventListenerOnSubmitForms();
+
+export {showPicture};
