@@ -1,11 +1,10 @@
-import { showPicture } from "../popups.js";
+export default class Card {
 
-export class Card {
-
-  constructor(cardObject, templateSelector) {
+  constructor(cardObject, templateSelector, handleCardClick) {
     this.name = cardObject.name;
     this.link = cardObject.link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _cloneTemplate() {
@@ -32,7 +31,7 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._placeImage.addEventListener('click', () => showPicture(this.name, this.link)); // Фигурные скобки ставил специально. Ведь функция не должна ничего возвращать.
+    this._placeImage.addEventListener('click', () => this._handleCardClick(this.name, this.link));
     this._placeDeleteButton.addEventListener('click', () => this._placeElement.remove());
     this._placeLikeButton.addEventListener('click', () => this._placeLikeButton.classList.toggle('place__like_active'));
   }
