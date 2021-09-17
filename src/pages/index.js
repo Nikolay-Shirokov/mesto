@@ -6,6 +6,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 
+import "./index.css";
+
 // Инициализация модального окна открытия картинки
 const popupPicture = new PopupWithImage('#popup-picture');
 popupPicture.setEventListeners();
