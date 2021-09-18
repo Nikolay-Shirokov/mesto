@@ -59,9 +59,7 @@ initialValidationPopupForm(popupEditProfile);
 function onSubmitFormAddPlace(event) {
 
   const place        = this._getInputValues();
-  const placeElement = renderPlace(place);
-
-  places.addItem(placeElement);
+  places.addItem(place);
 
 }
 
