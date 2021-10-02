@@ -1,8 +1,8 @@
 export default class Card {
 
   constructor(cardObject, templateSelector, handleCardClick) {
-    this.name = cardObject.name;
-    this.link = cardObject.link;
+    this._name = cardObject.name;
+    this._link = cardObject.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -25,13 +25,13 @@ export default class Card {
   }
 
   _fill() {
-    this._placeImage.setAttribute('src', this.link);
-    this._placeImage.setAttribute('alt', this.name);
-    this._placeCaption.textContent = this.name;
+    this._placeImage.setAttribute('src', this._link);
+    this._placeImage.setAttribute('alt', this._name);
+    this._placeCaption.textContent = this._name;
   }
 
   _setEventListeners() {
-    this._placeImage.addEventListener('click', () => this._handleCardClick(this.name, this.link));
+    this._placeImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     this._placeDeleteButton.addEventListener('click', () => this._placeElement.remove());
     this._placeLikeButton.addEventListener('click', () => this._placeLikeButton.classList.toggle('place__like_active'));
   }
