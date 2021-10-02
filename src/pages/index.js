@@ -67,9 +67,9 @@ function setStateLike(id, isLiked, callBack) {
 // Функция получения разметки новой карточки
 function renderPlace(place) {
   const card = new Card(place, '#place', userInfo.id, {
-    openPicture,
-    deleteCard,
-    setStateLike
+    handleCardClick: openPicture,
+    handleDeleteCard: deleteCard,
+    setStateLike: setStateLike
   });
   return card.createPlaceElement(place);
 }
