@@ -21,9 +21,11 @@ const server = new Api({
 // Инициализация профиля пользователя
 const userInfo = new UserInfo({
   selectorUserName: '.profile__name',
-  selectorUserPosition: '.profile__position'
+  selectorUserPosition: '.profile__position',
+  selectorAvatar: '.profile__avatar'
 });
 
+// Загрузка данных профиля с сервера
 server.getUserInfo().then(res => userInfo.setUserInfo(res))
 
 // Инициализация модального окна открытия картинки
