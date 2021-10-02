@@ -34,22 +34,20 @@ popupPicture.setEventListeners();
 
 // Функция открытия модального окна с увеличенной картинкой карточки
 function openPicture(...args) {
-   popupPicture.open(...args);
+  popupPicture.open(...args);
 }
 
 // Функция получения разметки новой карточки
 function renderPlace(place) {
-  const card = new Card(place, '#place', openPicture);
+  const card = new Card(place, '#place', openPicture, userInfo.id);
   return card.createPlaceElement(place);
 }
 
-
 // Инициализация коллекции карточек
-server.getInitialCards().then(res => {
-  const places = new Section({ items: res, renderer: renderPlace }, '.places');
-  places.renderItems(); // Отрисовка начальной коллекции карточек
+const places = new Section({ renderer: renderPlace }, '.places');
+server.getInitialCards().then(items => {
+  places.renderItems(items); // Отрисовка начальной коллекции карточек
 })
-
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(event) {
@@ -67,7 +65,7 @@ function initialValidationPopupForm(popup) {
 }
 
 // Инициализация модального окна редактирования профиля
-const popupEditProfile  = new PopupWithForm('#popup-edit-profile', {
+const popupEditProfile = new PopupWithForm('#popup-edit-profile', {
   onSubmitForm: onSubmitFormEditProfile,
 });
 popupEditProfile.setEventListeners();
@@ -76,13 +74,13 @@ initialValidationPopupForm(popupEditProfile);
 // Обработчик отправки данных формы добавления карточки
 function onSubmitFormAddPlace(event) {
 
-  const place        = this._getInputValues();
+  const place = this._getInputValues();
   places.addItem(place);
 
 }
 
 // Инициализация модального окна добавления карточки
-const popupAddPlace  = new PopupWithForm('#popup-add-place', {
+const popupAddPlace = new PopupWithForm('#popup-add-place', {
   onSubmitForm: onSubmitFormAddPlace,
 });
 popupAddPlace.setEventListeners();
@@ -98,7 +96,7 @@ buttonProfileEdit.addEventListener('click', () => {
 })
 
 // Кнопка открытия модального окна добавления карточки
-const buttonAddPlace    = document.querySelector('.profile__add-place');
+const buttonAddPlace = document.querySelector('.profile__add-place');
 buttonAddPlace.addEventListener('click', () => {
 
   popupAddPlace.open();
