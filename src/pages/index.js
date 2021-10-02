@@ -107,6 +107,23 @@ const popupEditProfile = new PopupWithForm('#popup-edit-profile', {
 popupEditProfile.setEventListeners();
 initialValidationPopupForm(popupEditProfile);
 
+// Обработчик отправки данных формы редактирования профиля
+function onSubmitFormEditAvatar() {
+  const data = this._getInputValues();
+  server.patchAvatar(data.link)
+    .then(res => {
+      userInfo.setUserInfo(res);
+      this.close();
+    })
+}
+
+// Инициализация модального окна редактирования аватара пользователя
+const popupEditAvatar = new PopupWithForm('#popup-edit-avatar', {
+  onSubmitForm: onSubmitFormEditAvatar,
+});
+popupEditAvatar.setEventListeners();
+initialValidationPopupForm(popupEditAvatar);
+
 // Обработчик отправки данных формы добавления карточки
 function onSubmitFormAddPlace() {
 
@@ -140,5 +157,12 @@ const buttonAddPlace = document.querySelector('.profile__add-place');
 buttonAddPlace.addEventListener('click', () => {
 
   popupAddPlace.open();
+
+})
+
+// Редактирование аватара
+document.querySelector('.profile__avatar-container').addEventListener('click', () => {
+
+  popupEditAvatar.open();
 
 })
