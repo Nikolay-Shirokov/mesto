@@ -66,16 +66,10 @@ export default class Api {
     return this._sendQuery(`cards/${cardId}`, queryParams);
   }
 
-  putLike(cardId) {
+  setStateLike(cardId, isLiked) {
+    const method = isLiked? 'DELETE': 'PUT';
     const queryParams = {
-      method: 'PUT',
-    }
-    return this._sendQuery(`cards/likes/${cardId}`, queryParams);
-  }
-
-  deleteLike(cardId) {
-    const queryParams = {
-      method: 'DELETE',
+      method: method,
     }
     return this._sendQuery(`cards/likes/${cardId}`, queryParams);
   }

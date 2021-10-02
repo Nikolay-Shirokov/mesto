@@ -57,9 +57,20 @@ function deleteCard(...args) {
   popupAcceptDelete.open(...args);
 }
 
+function setStateLike(id, isLiked, callBack) {
+  server.setStateLike(id, isLiked)
+    .then(res => {
+      callBack(res)
+    });
+}
+
 // Функция получения разметки новой карточки
 function renderPlace(place) {
-  const card = new Card(place, '#place', openPicture, deleteCard, userInfo.id);
+  const card = new Card(place, '#place', userInfo.id, {
+    openPicture,
+    deleteCard,
+    setStateLike
+  });
   return card.createPlaceElement(place);
 }
 
