@@ -32,7 +32,7 @@ export default class Api {
       method: 'PATCH',
       body: JSON.stringify({
         name: userInfo.name,
-        about: userInfo.position
+        about: userInfo.about
       })
     }
     return this._sendQuery('users/me', queryParams);

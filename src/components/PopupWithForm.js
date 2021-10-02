@@ -78,7 +78,7 @@ export default class PopupWithForm extends Popup {
       if (this._onSubmitForm) {
         this._onSubmitForm();
       }
-      this.close();
+      /* this.close(); */
     })
   }
 
