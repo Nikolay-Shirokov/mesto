@@ -1,4 +1,4 @@
-import { initialCards, validationParameters } from "../utils/constants.js";
+import { validationParameters } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -43,9 +43,13 @@ function renderPlace(place) {
   return card.createPlaceElement(place);
 }
 
+
 // Инициализация коллекции карточек
-const places = new Section({ items: initialCards, renderer: renderPlace }, '.places');
-places.renderItems(); // Отрисовка начальной коллекции карточек
+server.getInitialCards().then(res => {
+  const places = new Section({ items: res, renderer: renderPlace }, '.places');
+  places.renderItems(); // Отрисовка начальной коллекции карточек
+})
+
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(event) {
