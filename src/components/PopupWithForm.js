@@ -8,10 +8,8 @@ export default class PopupWithForm extends Popup {
     this._onOpen        = onOpen;
     this._onClose       = onClose;
     this._formElement   = this._element.querySelector('.form');
-    // Мне показалось что сохранять список инпутов избыточно, элементов в форме не так много
-    // и поиск не должен выполняться за большое количество операций
-    // что это будет дешевле чем выделять память под хранение
     this._inputList     = this._formElement.querySelectorAll('.form__input');
+    this._submitButton  = this._formElement.querySelector('.form__submit');
   }
 
   open() {
@@ -75,10 +73,14 @@ export default class PopupWithForm extends Popup {
     super.setEventListeners();
     this._formElement.addEventListener('submit', event => {
       event.preventDefault();
+      const buttonText = this._submitButton.textContent;
+      this._submitButton.textContent = this._submitButton.dataset.waitingText;
       if (this._onSubmitForm) {
-        this._onSubmitForm();
+        this._onSubmitForm(() => {
+          this._submitButton.textContent = buttonText;
+          this.close();
+        });
       }
-      /* this.close(); */
     })
   }
 

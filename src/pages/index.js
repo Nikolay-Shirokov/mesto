@@ -81,12 +81,12 @@ server.getInitialCards().then(items => {
 })
 
 // Обработчик отправки данных формы редактирования профиля
-function onSubmitFormEditProfile() {
+function onSubmitFormEditProfile(callBack) {
   const data = this._getInputValues();
   server.patchUserInfo(data)
     .then(res => {
       userInfo.setUserInfo(res);
-      this.close();
+      callBack();
     })
 }
 
@@ -108,12 +108,12 @@ popupEditProfile.setEventListeners();
 initialValidationPopupForm(popupEditProfile);
 
 // Обработчик отправки данных формы редактирования профиля
-function onSubmitFormEditAvatar() {
+function onSubmitFormEditAvatar(callBack) {
   const data = this._getInputValues();
   server.patchAvatar(data.link)
     .then(res => {
       userInfo.setUserInfo(res);
-      this.close();
+      callBack();
     })
 }
 
@@ -125,13 +125,13 @@ popupEditAvatar.setEventListeners();
 initialValidationPopupForm(popupEditAvatar);
 
 // Обработчик отправки данных формы добавления карточки
-function onSubmitFormAddPlace() {
+function onSubmitFormAddPlace(callBack) {
 
   const place = this._getInputValues();
   server.postCard(place)
     .then(newCard => {
       places.addItem(newCard);
-      this.close();
+      callBack();
     })
 
 }
