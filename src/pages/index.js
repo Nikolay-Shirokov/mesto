@@ -50,7 +50,7 @@ server.getInitialCards().then(items => {
 })
 
 // Обработчик отправки данных формы редактирования профиля
-function onSubmitFormEditProfile(event) {
+function onSubmitFormEditProfile() {
   const data = this._getInputValues();
   server.patchUserInfo(data)
     .then(res => {
@@ -77,12 +77,15 @@ popupEditProfile.setEventListeners();
 initialValidationPopupForm(popupEditProfile);
 
 // Обработчик отправки данных формы добавления карточки
-function onSubmitFormAddPlace(event) {
+function onSubmitFormAddPlace() {
 
   const place = this._getInputValues();
-  places.addItem(place);
-  this.close();
-  
+  server.postCard(place)
+    .then(newCard => {
+      places.addItem(newCard);
+      this.close();
+    })
+
 }
 
 // Инициализация модального окна добавления карточки
