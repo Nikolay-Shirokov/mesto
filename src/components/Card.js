@@ -1,10 +1,11 @@
 export default class Card {
 
-  constructor(cardObject, templateSelector, handleCardClick, userId) {
+  constructor(cardObject, templateSelector, handleCardClick, handleDeleteCard, userId) {
     this._name = cardObject.name;
     this._link = cardObject.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteCard= handleDeleteCard;
     this._userId = userId;
 
     this.id = cardObject._id;
@@ -56,7 +57,9 @@ export default class Card {
     this._placeImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     this._placeLikeButton.addEventListener('click', () => this._placeLikeButton.classList.toggle('place__like_active'));
     if (this._isMyCard) {
-      this._placeDeleteButton.addEventListener('click', () => this._placeElement.remove());
+      this._placeDeleteButton.addEventListener('click', () => {
+        this._handleDeleteCard(this.id, () => this._placeElement.remove());
+      });
     }
   }
 

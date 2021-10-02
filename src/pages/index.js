@@ -3,6 +3,7 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithAccept from "../components/PopupWithAccept.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
 import Api from "../components/Api.js";
@@ -37,9 +38,28 @@ function openPicture(...args) {
   popupPicture.open(...args);
 }
 
+//Обработчик подтверждения удаления карточки
+function onSubmitFormAcceptDelete() {
+  server.deleteCard(this.id)
+    .then(res => {
+      this.onSubmitFormAdditional();
+      this.close();
+    })
+}
+
+// Инициализация модального окна подтверждения удаления
+const popupAcceptDelete = new PopupWithAccept('#popup-accept', {
+  onSubmitForm: onSubmitFormAcceptDelete,
+});
+popupAcceptDelete.setEventListeners();
+
+function deleteCard(...args) {
+  popupAcceptDelete.open(...args);
+}
+
 // Функция получения разметки новой карточки
 function renderPlace(place) {
-  const card = new Card(place, '#place', openPicture, userInfo.id);
+  const card = new Card(place, '#place', openPicture, deleteCard, userInfo.id);
   return card.createPlaceElement(place);
 }
 
