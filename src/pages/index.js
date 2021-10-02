@@ -5,8 +5,26 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import FormValidator from "../components/FormValidator.js";
+import Api from "../components/Api.js";
 
 import "./index.css";
+
+// Инициализация АПИ
+const server = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-28',
+  headers: {
+    authorization: '720b9ff8-fdb3-4425-b748-9e049f638fb6',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Инициализация профиля пользователя
+const userInfo = new UserInfo({
+  selectorUserName: '.profile__name',
+  selectorUserPosition: '.profile__position'
+});
+
+server.getUserInfo().then(res => userInfo.setUserInfo(res))
 
 // Инициализация модального окна открытия картинки
 const popupPicture = new PopupWithImage('#popup-picture');
@@ -26,12 +44,6 @@ function renderPlace(place) {
 // Инициализация коллекции карточек
 const places = new Section({ items: initialCards, renderer: renderPlace }, '.places');
 places.renderItems(); // Отрисовка начальной коллекции карточек
-
-// Инициализация профиля пользователя
-const userInfo = new UserInfo({
-  selectorUserName: '.profile__name',
-  selectorUserPosition: '.profile__position'
-});
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(event) {
