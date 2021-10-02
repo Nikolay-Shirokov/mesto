@@ -51,7 +51,12 @@ server.getInitialCards().then(items => {
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(event) {
-  userInfo.setUserInfo(this._getInputValues());
+  const data = this._getInputValues();
+  server.patchUserInfo(data)
+    .then(res => {
+      userInfo.setUserInfo(res);
+      this.close();
+    })
 }
 
 function initialValidationPopupForm(popup) {
@@ -76,7 +81,8 @@ function onSubmitFormAddPlace(event) {
 
   const place = this._getInputValues();
   places.addItem(place);
-
+  this.close();
+  
 }
 
 // Инициализация модального окна добавления карточки
