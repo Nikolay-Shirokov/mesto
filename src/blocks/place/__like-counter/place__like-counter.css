@@ -1,0 +1,11 @@
+﻿.place__like-counter {
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  margin: 0;
+
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
