@@ -90,14 +90,15 @@ Promise.all([promiseGetUserInfo, promiseGetInitialCards])
   .catch(handleError);
 
 // Обработчик отправки данных формы редактирования профиля
-function onSubmitFormEditProfile(callBack) {
+function onSubmitFormEditProfile({ callBackResolve, callBackFinally }) {
   const data = popupEditProfile.getInputValues();
   server.patchUserInfo(data)
     .then(res => {
       userInfo.setUserInfo(res);
-      callBack();
+      callBackResolve();
     })
-    .catch(handleError);
+    .catch(handleError)
+    .finally(res => callBackFinally(res));
 }
 
 function initialValidationPopupForm(popup) {
@@ -118,14 +119,15 @@ popupEditProfile.setEventListeners();
 initialValidationPopupForm(popupEditProfile);
 
 // Обработчик отправки данных формы редактирования профиля
-function onSubmitFormEditAvatar(callBack) {
+function onSubmitFormEditAvatar({ callBackResolve, callBackFinally }) {
   const data = popupEditAvatar.getInputValues();
   server.patchAvatar(data.link)
     .then(res => {
       userInfo.setUserInfo(res);
-      callBack();
+      callBackResolve();
     })
-    .catch(handleError);
+    .catch(handleError)
+    .finally(res => callBackFinally(res));
 }
 
 // Инициализация модального окна редактирования аватара пользователя
@@ -136,15 +138,16 @@ popupEditAvatar.setEventListeners();
 initialValidationPopupForm(popupEditAvatar);
 
 // Обработчик отправки данных формы добавления карточки
-function onSubmitFormAddPlace(callBack) {
+function onSubmitFormAddPlace({ callBackResolve, callBackFinally }) {
 
   const place = popupAddPlace.getInputValues();
   server.postCard(place)
     .then(newCard => {
       places.addItem(newCard);
-      callBack();
+      callBackResolve();
     })
-    .catch(handleError);
+    .catch(handleError)
+    .finally(res => callBackFinally(res));
 
 }
 

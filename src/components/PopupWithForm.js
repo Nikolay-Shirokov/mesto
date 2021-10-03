@@ -76,9 +76,13 @@ export default class PopupWithForm extends Popup {
       const buttonText = this._submitButton.textContent;
       this._submitButton.textContent = this._submitButton.dataset.waitingText;
       if (this._onSubmitForm) {
-        this._onSubmitForm(() => {
-          this._submitButton.textContent = buttonText;
-          this.close();
+        this._onSubmitForm({
+          callBackResolve: () => {
+            this.close();
+          },
+          callBackFinally: () => {
+            this._submitButton.textContent = buttonText;
+          }
         });
       }
     })
