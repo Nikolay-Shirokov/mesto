@@ -46,6 +46,7 @@ function onSubmitFormAcceptDelete() {
       this.onSubmitFormAdditional();
       this.close();
     })
+    .catch(handleError);
 }
 
 // Инициализация модального окна подтверждения удаления
@@ -62,7 +63,8 @@ function setStateLike(id, isLiked, callBack) {
   server.setStateLike(id, isLiked)
     .then(res => {
       callBack(res)
-    });
+    })
+    .catch(handleError);
 }
 
 // Функция получения разметки новой карточки
@@ -97,6 +99,7 @@ function onSubmitFormEditProfile(callBack) {
       userInfo.setUserInfo(res);
       callBack();
     })
+    .catch(handleError);
 }
 
 function initialValidationPopupForm(popup) {
@@ -124,6 +127,7 @@ function onSubmitFormEditAvatar(callBack) {
       userInfo.setUserInfo(res);
       callBack();
     })
+    .catch(handleError);
 }
 
 // Инициализация модального окна редактирования аватара пользователя
@@ -142,6 +146,7 @@ function onSubmitFormAddPlace(callBack) {
       places.addItem(newCard);
       callBack();
     })
+    .catch(handleError);
 
 }
 
