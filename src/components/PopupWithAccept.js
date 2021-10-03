@@ -14,10 +14,6 @@ export default class PopupWithAccept extends Popup {
     super.open();
   }
 
-  close() {
-    super.close();
-  }
-
   setEventListeners() {
     super.setEventListeners();
     this._formElement.addEventListener('submit', event => {

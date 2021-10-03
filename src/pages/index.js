@@ -10,6 +10,10 @@ import Api from "../components/Api.js";
 
 import "./index.css";
 
+function handleError(err) {
+  console.error(err);
+}
+
 // Инициализация АПИ
 const server = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-28',
@@ -25,9 +29,6 @@ const userInfo = new UserInfo({
   selectorUserPosition: '.profile__position',
   selectorAvatar: '.profile__avatar'
 });
-
-// Загрузка данных профиля с сервера
-server.getUserInfo().then(res => userInfo.setUserInfo(res))
 
 // Инициализация модального окна открытия картинки
 const popupPicture = new PopupWithImage('#popup-picture');
@@ -76,9 +77,17 @@ function renderPlace(place) {
 
 // Инициализация коллекции карточек
 const places = new Section({ renderer: renderPlace }, '.places');
-server.getInitialCards().then(items => {
-  places.renderItems(items); // Отрисовка начальной коллекции карточек
-})
+
+// Загрузка данных профиля с сервера
+const promiseGetUserInfo = server.getUserInfo();
+// Загрузка коллекции карточек с сервера
+const promiseGetInitialCards = server.getInitialCards();
+Promise.all([promiseGetUserInfo, promiseGetInitialCards])
+  .then(([resultGetUserInfo, resultGetInitialCards]) => {
+    userInfo.setUserInfo(resultGetUserInfo);
+    places.renderItems(resultGetInitialCards); // Отрисовка начальной коллекции карточек
+  })
+  .catch(handleError);
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(callBack) {

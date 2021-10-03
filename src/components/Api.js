@@ -14,9 +14,9 @@ export default class Api {
 
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch(err => {
+/*       .catch(err => {
         console.error(err);
-      })
+      }) */
   }
 
   getInitialCards() {
