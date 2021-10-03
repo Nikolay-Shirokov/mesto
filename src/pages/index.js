@@ -39,19 +39,17 @@ function openPicture(...args) {
   popupPicture.open(...args);
 }
 
-//Обработчик подтверждения удаления карточки
-function onSubmitFormAcceptDelete() {
-  server.deleteCard(this.id)
-    .then(res => {
-      this.onSubmitFormAdditional();
-      this.close();
-    })
-    .catch(handleError);
-}
-
 // Инициализация модального окна подтверждения удаления
 const popupAcceptDelete = new PopupWithAccept('#popup-accept', {
-  onSubmitForm: onSubmitFormAcceptDelete,
+  //Обработчик подтверждения удаления карточки
+  onSubmitForm: () => {
+    server.deleteCard(popupAcceptDelete.id)
+      .then(res => {
+        popupAcceptDelete.onSubmitFormAdditional();
+        popupAcceptDelete.close();
+      })
+      .catch(handleError);
+  },
 });
 popupAcceptDelete.setEventListeners();
 
@@ -93,7 +91,7 @@ Promise.all([promiseGetUserInfo, promiseGetInitialCards])
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditProfile(callBack) {
-  const data = this._getInputValues();
+  const data = popupEditProfile.getInputValues();
   server.patchUserInfo(data)
     .then(res => {
       userInfo.setUserInfo(res);
@@ -121,7 +119,7 @@ initialValidationPopupForm(popupEditProfile);
 
 // Обработчик отправки данных формы редактирования профиля
 function onSubmitFormEditAvatar(callBack) {
-  const data = this._getInputValues();
+  const data = popupEditAvatar.getInputValues();
   server.patchAvatar(data.link)
     .then(res => {
       userInfo.setUserInfo(res);
@@ -140,7 +138,7 @@ initialValidationPopupForm(popupEditAvatar);
 // Обработчик отправки данных формы добавления карточки
 function onSubmitFormAddPlace(callBack) {
 
-  const place = this._getInputValues();
+  const place = popupAddPlace.getInputValues();
   server.postCard(place)
     .then(newCard => {
       places.addItem(newCard);
@@ -152,6 +150,7 @@ function onSubmitFormAddPlace(callBack) {
 
 // Инициализация модального окна добавления карточки
 const popupAddPlace = new PopupWithForm('#popup-add-place', {
+  // Обработчик отправки данных формы добавления карточки
   onSubmitForm: onSubmitFormAddPlace,
 });
 popupAddPlace.setEventListeners();

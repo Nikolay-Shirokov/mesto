@@ -44,7 +44,7 @@ export default class PopupWithForm extends Popup {
     this._formValidator = formValidator;
   }
 
-  _getInputValues() {
+  getInputValues() {
 
     const result = {};
 
